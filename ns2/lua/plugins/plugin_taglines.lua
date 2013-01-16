@@ -1,4 +1,4 @@
-//Taglines
+--Taglines
 
 if kDAKConfig and kDAKConfig.Taglines then
 	Script.Load("lua/TGNSCommon.lua")
@@ -40,27 +40,26 @@ if kDAKConfig and kDAKConfig.Taglines then
 	end
 
 	local function ShowCurrentTagline(client)
-		//ServerAdminPrint(client, "[TAGLINE] Your current tagline:")
 		TGNS:ConsolePrint(client, "Your current tagline:", "TAGLINE")
 		local steamId = client:GetUserId()
 		local tagline = LoadTagline(steamId)
 		if tagline == nil or tagline.message == "" then
-			ServerAdminPrint(client, "[TAGLINE]     You don't currently have a tagline saved.")
+			TGNS:ConsolePrint(client, "     You don't currently have a tagline saved.", "TAGLINE")
 		else
-			ServerAdminPrint(client, "[TAGLINE]     " .. tagline.message)
+			TGNS:ConsolePrint(client, "     " .. tagline.message, "TAGLINE")
 		end
 	end
     
 	local function ShowUsage(client) 
-		ServerAdminPrint(client, "[TAGLINE]")
-		ServerAdminPrint(client, "[TAGLINE] Usage:")
-		ServerAdminPrint(client, "[TAGLINE]     sv_tagline <whatever you want all players to see when you join as a Supporting Member>")
-		ServerAdminPrint(client, "[TAGLINE] Notes:")
-		ServerAdminPrint(client, "[TAGLINE] * Any length may be saved, but displayed character count is dictated by NS2 and may change in the future.")
-		ServerAdminPrint(client, "[TAGLINE] * Taglines do not display to players in the first two minutes after a map loads")
-		ServerAdminPrint(client, "[TAGLINE] * To remove your tagline at any time: sv_tagline remove")
+		TGNS:ConsolePrint(client, "", "TAGLINE")
+		TGNS:ConsolePrint(client, "Usage:", "TAGLINE")
+		TGNS:ConsolePrint(client, "    sv_tagline <whatever you want all players to see when you join as a Supporting Member>", "TAGLINE")
+		TGNS:ConsolePrint(client, "Notes:", "TAGLINE")
+		TGNS:ConsolePrint(client, "* Any length may be saved, but displayed character count is dictated by NS2 and may change in the future.", "TAGLINE")
+		TGNS:ConsolePrint(client, "* Taglines do not display to players in the first two minutes after a map loads", "TAGLINE")
+		TGNS:ConsolePrint(client, "* To remove your tagline at any time: sv_tagline remove", "TAGLINE")
 		ShowCurrentTagline(client)
-		ServerAdminPrint(client, "[TAGLINE]")
+		TGNS:ConsolePrint(client, "", "TAGLINE")
 	end
 	
 	local function svTagline(client, ...)
