@@ -1,4 +1,4 @@
---Taglines
+//Taglines
 
 if kDAKConfig and kDAKConfig.Taglines then
 	Script.Load("lua/TGNSCommon.lua")
